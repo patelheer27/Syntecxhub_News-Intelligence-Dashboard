@@ -16,16 +16,19 @@ function App() {
 
   const fetchNews = () => {
     setLoading(true);
+    setError("");
 
     axios
-      .get("http://127.0.0.1:5000/api/news")
+      .get(
+        "https://syntecxhubnews-intelligence-dashboard-production.up.railway.app/api/news"
+      )
       .then((response) => {
         setNews(response.data);
         setLoading(false);
       })
       .catch((error) => {
         console.error(error);
-        setError("Unable to load news. Make sure Flask is running.");
+        setError("Unable to load news. Please try again.");
         setLoading(false);
       });
   };
